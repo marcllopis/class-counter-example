@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import Header from './components/Header';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  // constructor will keep our state
+  state = {
+    name: 'Marc',
+    dog: {
+      name: 'Luke',
+      age: 4,
+    },
+    counter: 0
+  }
+
+
+  // methods
+
+  increment = () => {
+    this.setState({
+      counter: this.state.counter + 1
+    })
+  }
+
+  decrease = () => {
+    this.setState({
+      counter: this.state.counter - 1
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        <Header title='My first class component' />
+        <h1>Hello {this.state.name}!</h1>
+        <h2>And also hello to your dog {this.state.dog.name}!</h2>
+        <p>Counter value: {this.state.counter}</p>
+        <button onClick={this.increment}>+</button>
+        <button onClick={this.decrease}>-</button>
+      </div>
+    )
+  }
 }
 
 export default App;
